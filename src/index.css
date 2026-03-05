@@ -1,68 +1,122 @@
+@import "tailwindcss";
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-surface-outer: #f3f0ff;
+  --color-surface: #fbf9ff;
+  --color-surface-elevated: #ffffff;
+  --color-surface-elevated-hover: #f4f2ff;
+  --color-header: #2c1450;
+  --color-primary: #5b5fff;
+  --color-primary-hover: #4b4fe0;
+  --color-primary-active: #3c3fc2;
+  --color-primary-border: rgba(91, 95, 255, 0.6);
+  --color-border-subtle: rgba(15, 23, 42, 0.08);
+  --color-foreground: #151526;
+  --color-muted: #6b6b8a;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: radial-gradient(circle at top left, #5b5fff20, transparent 55%),
+    radial-gradient(circle at bottom right, #ff80b520, transparent 55%), var(--color-surface-outer);
+  color: var(--color-foreground);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.shadow-soft {
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(15, 23, 42, 0.02);
 }
+
+.shadow-soft-xl {
+  box-shadow:
+    0 32px 80px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.03);
+}
+
+.bg-surface-outer {
+  background-color: var(--color-surface-outer);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-surface-elevated {
+  background-color: var(--color-surface-elevated);
+}
+
+.bg-surface-elevated-hover {
+  background-color: var(--color-surface-elevated-hover);
+}
+
+.bg-header {
+  background: linear-gradient(90deg, #2c1450, #442b8c);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.border-border-subtle {
+  border-color: var(--color-border-subtle);
+}
+
+.text-foreground {
+  color: var(--color-foreground);
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-on-primary {
+  color: #ffffff;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.focus-visible\:ring-primary {
+  --tw-ring-color: var(--color-primary);
+}
+
+.focus-visible\:ring-offset-surface {
+  --tw-ring-offset-color: var(--color-surface);
+}
+

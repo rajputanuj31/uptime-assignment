@@ -24,7 +24,7 @@ export const ReportSidebar = () => {
     <aside className="h-full">
       <Card className="flex h-full flex-col gap-3 rounded-xl p-4">
         <div className="text-lg font-semibold leading-tight text-foreground">
-          Select Report <br /> Dashboard
+          Select Report Dashboard
         </div>
         <div className="flex items-center gap-2">
           <div className="flex-1">
@@ -42,7 +42,7 @@ export const ReportSidebar = () => {
           </Button>
         </div>
 
-        <div className="flex-1 space-y-1 overflow-y-auto pr-1">
+        <div className="flex-1 space-y-1 pr-1">
           {paginatedReports.length === 0 ? (
             <p className="text-xs text-muted">No reports match your search.</p>
           ) : (

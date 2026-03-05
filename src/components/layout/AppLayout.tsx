@@ -9,7 +9,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => (
   <div className="min-h-screen bg-surface-outer text-foreground">
     <header className="border-b border-border-subtle bg-header px-6 py-4">
       <div className="mx-auto flex items-center justify-between gap-4">
-        <div className="text-sm font-semibold text-on-primary">Dashboard</div>
+        <div className="text-xl font-semibold text-on-primary">Dashboard</div>
         <div className="flex items-center gap-3">
           <HeaderIconButton ariaLabel="Notifications" label="0" />
           <HeaderIconButton ariaLabel="Help" label="?" />

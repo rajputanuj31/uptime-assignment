@@ -66,23 +66,54 @@ const reportsReducer = (state: ReportsState, action: ReportsAction): ReportsStat
   }
 }
 
-const loadReportsFromStorage = (): Report[] | null => {
+type StoredReportsState = {
+  reports: Report[]
+  selectedReportId: string | null
+}
+
+const loadReportsFromStorage = (): StoredReportsState | null => {
   if (typeof window === 'undefined') return null
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw) as unknown
-    if (!Array.isArray(parsed)) return null
-    return parsed as Report[]
+
+    // Legacy format: plain array of reports.
+    if (Array.isArray(parsed)) {
+      const reports = parsed as Report[]
+      return {
+        reports,
+        selectedReportId: reports[0]?.id ?? null,
+      }
+    }
+
+    // Current format: object with reports + selectedReportId.
+    if (
+      parsed &&
+      typeof parsed === 'object' &&
+      Array.isArray((parsed as { reports?: unknown }).reports)
+    ) {
+      const { reports, selectedReportId } = parsed as {
+        reports: Report[]
+        selectedReportId?: string | null
+      }
+      return {
+        reports,
+        selectedReportId: selectedReportId ?? reports[0]?.id ?? null,
+      }
+    }
+
+    return null
   } catch {
     return null
   }
 }
 
-const persistReportsToStorage = (reports: Report[]): void => {
+const persistReportsToStorage = (reports: Report[], selectedReportId: string | null): void => {
   if (typeof window === 'undefined') return
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(reports))
+    const payload: StoredReportsState = { reports, selectedReportId }
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
   } catch {
     // Ignore storage errors; UI should remain functional without persistence.
   }
@@ -95,8 +126,11 @@ export const ReportsProvider = ({ children }: { children: ReactNode }) => {
     stored
       ? {
           ...initialState,
-          reports: stored,
-          selectedReportId: stored[0]?.id ?? null,
+          reports: stored.reports.length > 0 ? stored.reports : initialState.reports,
+          selectedReportId:
+            stored.selectedReportId ??
+            stored.reports[0]?.id ??
+            initialState.selectedReportId,
         }
       : initialState,
   )
@@ -142,10 +176,12 @@ export const ReportsProvider = ({ children }: { children: ReactNode }) => {
     },
     selectReport: (id) => {
       dispatch({ type: 'SELECT_REPORT', payload: id })
+      persistReportsToStorage(reports, id)
     },
     addReport: (report) => {
+      const nextReports = [report, ...reports]
       dispatch({ type: 'ADD_REPORT', payload: report })
-      persistReportsToStorage([report, ...reports])
+      persistReportsToStorage(nextReports, report.id)
     },
   }
 

@@ -46,7 +46,7 @@ export const ReportDonutChart = ({ report }: ReportDonutChartProps) => {
         },
       },
     },
-    cutout: '72%',
+    cutout: '50%',
   }
 
   return (
@@ -54,8 +54,8 @@ export const ReportDonutChart = ({ report }: ReportDonutChartProps) => {
       <div className="mb-3 text-sm font-medium text-foreground">
         {report.donutChart.title}
       </div>
-      <div className="grid items-center gap-4 md:grid-cols-[minmax(0,1fr),auto]">
-        <div className="relative h-44">
+      <div className="grid grid-cols-[minmax(0,1.3fr)_auto] items-center gap-6">
+        <div className="relative h-52">
           <Doughnut data={data} options={options} />
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs font-medium text-muted">
             Alert Rates
@@ -64,7 +64,7 @@ export const ReportDonutChart = ({ report }: ReportDonutChartProps) => {
         <ul className="space-y-2 text-xs">
           {report.donutChart.slices.map((slice, index) => (
             <li key={slice.label} className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <span
                   aria-hidden
                   className="h-2.5 w-2.5 rounded-full"
@@ -72,7 +72,6 @@ export const ReportDonutChart = ({ report }: ReportDonutChartProps) => {
                 />
                 <span className="text-muted">{slice.label}</span>
               </div>
-              <span className="font-medium text-foreground">{slice.value}%</span>
             </li>
           ))}
         </ul>

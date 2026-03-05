@@ -118,11 +118,6 @@ export const AddReportModal = ({ open, setOpen }: AddReportModalProps) => {
             </p>
           )}
         </div>
-
-        <p className="text-[11px] text-muted">
-          New reports will use the same data structure as existing dashboards so they can be viewed
-          with the same charts and KPIs.
-        </p>
       </div>
     </Modal>
   )

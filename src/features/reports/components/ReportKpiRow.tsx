@@ -1,4 +1,5 @@
 import type { Report } from '../types/report'
+import { Bell, CheckCircle2, Clock3 } from 'lucide-react'
 import { Card } from '@/components/ui'
 
 export interface ReportKpiRowProps {
@@ -20,24 +21,39 @@ export const ReportKpiRow = ({ report }: ReportKpiRowProps) => {
         </div>
       </Card>
 
-      <Card className="flex flex-col justify-center rounded-xl border-border-subtle bg-surface-elevated px-4 py-3">
-        <div className="text-3xl font-semibold leading-none text-foreground">{openAlerts}</div>
-        <div className="mt-1 text-xs text-muted">Open Alerts</div>
+      <Card className="flex items-center gap-3 rounded-xl border-border-subtle bg-linear-to-br px-4 py-4 shadow-soft">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br text-primary shadow-sm">
+          <Bell className="h-5 w-5" />
+        </div>
+        <div>
+          <div className="text-2xl font-semibold leading-none text-foreground">{openAlerts}</div>
+          <div className="mt-1 text-xs text-muted">Open Alerts</div>
+        </div>
       </Card>
 
-      <Card className="flex flex-col justify-center rounded-xl border-border-subtle bg-surface-elevated px-4 py-3">
-        <div className="text-3xl font-semibold leading-none text-foreground">
-          {closingRate.toFixed(1)}%
+      <Card className="flex items-center gap-3 rounded-xl border-border-subtle bg-linear-to-br px-4 py-4 shadow-soft">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br text-primary shadow-sm">
+          <CheckCircle2 className="h-5 w-5" />
         </div>
-        <div className="mt-1 text-xs text-muted">Closing Rate %</div>
+        <div>
+          <div className="text-2xl font-semibold leading-none text-foreground">
+            {closingRate.toFixed(1)}%
+          </div>
+          <div className="mt-1 text-xs text-muted">Closing Rate %</div>
+        </div>
       </Card>
 
-      <Card className="flex flex-col justify-center rounded-xl border-border-subtle bg-surface-elevated px-4 py-3">
-        <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-semibold leading-none text-foreground">{oldestDays}</span>
-          <span className="text-sm font-medium text-muted">Days</span>
+      <Card className="flex items-center gap-3 rounded-xl border-border-subtle bg-linear-to-br px-4 py-4 shadow-soft">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br text-primary shadow-sm">
+          <Clock3 className="h-5 w-5" />
         </div>
-        <div className="mt-1 text-xs text-muted">Oldest Unacknowledged Alert</div>
+        <div>
+          <div className="flex items-baseline gap-1">
+            <span className="text-2xl font-semibold leading-none text-foreground">{oldestDays}</span>
+            <span className="text-sm font-medium text-muted">Days</span>
+          </div>
+          <div className="mt-1 text-xs text-muted">Oldest Unacknowledged Alert</div>
+        </div>
       </Card>
     </div>
   )

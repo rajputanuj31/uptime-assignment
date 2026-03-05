@@ -19,20 +19,20 @@ export const ReportChartsRow = ({ report }: ReportChartsRowProps) => {
   const { openAlerts, closingRatePct, oldestUnackedDays } = report.kpis
 
   return (
-    <Card className="flex flex-col rounded-xl border-border-subtle bg-surface-elevated p-4 space-y-4">
+    <Card className="flex h-full flex-col rounded-xl border-border-subtle bg-surface-elevated p-4 space-y-4">
       <div className="grid gap-3 md:grid-cols-3 text-center text-[11px]">
-        <div className="rounded-lg bg-surface px-3 py-2">
-          <div className="text-muted">Number of Open Alerts</div>
+        <div className="rounded-lg bg-white px-3 py-2 border border-border-subtle">
+          <div className="text-black">Number of Open Alerts</div>
           <div className="mt-1 text-sm font-semibold text-primary">{openAlerts}</div>
         </div>
-        <div className="rounded-lg bg-surface px-3 py-2">
-          <div className="text-muted">Closing Rate %</div>
+        <div className="rounded-lg bg-white px-3 py-2 border border-border-subtle">
+          <div className="text-black">Closing Rate %</div>
           <div className="mt-1 text-sm font-semibold text-primary">
             {closingRatePct.toFixed(1)}%
           </div>
         </div>
-        <div className="rounded-lg bg-surface px-3 py-2">
-          <div className="text-muted">Oldest Unacknowledged Alert</div>
+        <div className="rounded-lg bg-white px-3 py-2 border border-border-subtle">
+          <div className="text-black">Oldest Unacknowledged Alert</div>
           <div className="mt-1 text-sm font-semibold text-primary">
             {oldestUnackedDays} Days
           </div>
@@ -40,9 +40,17 @@ export const ReportChartsRow = ({ report }: ReportChartsRowProps) => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-  <ReportBarChart report={report} />
-  <ReportDonutChart report={report} />
-</div>
+        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-[1px]">
+          <div className="h-full rounded-2xl bg-white p-4">
+            <ReportBarChart report={report} />
+          </div>
+        </div>
+        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-[1px]">
+          <div className="h-full rounded-2xl bg-white p-4">
+            <ReportDonutChart report={report} />
+          </div>
+        </div>
+      </div>
     </Card>
   )
 }

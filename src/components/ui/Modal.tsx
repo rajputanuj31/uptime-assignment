@@ -47,7 +47,7 @@ export const Modal = ({
           <button
             type="button"
             aria-label="Close"
-            className="rounded-full border border-border-subtle bg-surface px-2 py-1 text-sm text-muted hover:bg-surface-elevated-hover"
+            className="flex items-center justify-center w-8 h-8 rounded-full border border-border-subtle bg-surface text-sm text-muted hover:bg-surface-elevated-hover cursor-pointer"
             onClick={onClose}
           >
             ×

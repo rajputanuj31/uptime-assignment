@@ -13,7 +13,7 @@ export const ReportListItem = ({ report, selected, onSelect }: ReportListItemPro
       type="button"
       onClick={onSelect}
       className={clsx(
-        'flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left text-xs transition-colors',
+        'flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left text-xs transition-colors',
         selected ? 'bg-surface-elevated-hover text-foreground' : 'text-muted hover:bg-surface-elevated-hover',
       )}
     >

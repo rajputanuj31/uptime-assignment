@@ -22,7 +22,7 @@ export const ReportPagination = ({ page, totalPages, onPageChange }: ReportPagin
             aria-label={`Go to page ${pageNumber}`}
             onClick={() => onPageChange(pageNumber)}
             className={clsx(
-              'flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-medium transition-colors',
+              'flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border text-[11px] font-medium transition-colors',
               isActive
                 ? 'border-primary-border bg-primary text-on-primary'
                 : 'border-border-subtle bg-surface-elevated text-muted hover:bg-surface-elevated-hover',

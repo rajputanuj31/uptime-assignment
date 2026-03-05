@@ -25,7 +25,7 @@ const DashboardShell = () => {
 
       <ReportKpiRow report={selectedReport} />
 
-      <div className="grid h-[560px] grid-cols-[260px_minmax(0,1fr)] gap-4 items-stretch">
+      <div className="flex flex-col md:grid md:h-[560px] md:grid-cols-[260px_minmax(0,1fr)] gap-4 items-stretch">
         <ReportSidebar />
         <ReportChartsRow report={selectedReport} />
       </div>

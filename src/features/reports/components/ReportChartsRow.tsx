@@ -39,13 +39,14 @@ export const ReportChartsRow = ({ report }: ReportChartsRowProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-[1px]">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
+        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-px">
           <div className="h-full rounded-2xl bg-white p-4">
             <ReportBarChart report={report} />
           </div>
         </div>
-        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-[1px]">
+
+        <div className="rounded-2xl bg-linear-to-br from-[#f3e8ff] via-[#f8f4ff] to-[#e4d5ff] p-px">
           <div className="h-full rounded-2xl bg-white p-4">
             <ReportDonutChart report={report} />
           </div>
